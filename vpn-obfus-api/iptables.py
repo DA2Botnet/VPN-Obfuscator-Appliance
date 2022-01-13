@@ -58,6 +58,10 @@ def allow_tunneling():
     os.system("iptables -t nat -A POSTROUTING -o tun+ -j MASQUERADE")
     os.system("iptables -A OUTPUT -o tun+ -j ACCEPT")
 
+# Allow ssh
+def allow_ssh():
+    os.system("iptables -A INPUT -p tcp --dport ssh -j ACCEPT")
+
 # Default VPN port
 default_vpn_port = 1194
 
